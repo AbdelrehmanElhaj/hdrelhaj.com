@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npx wrangler whoami 2>&1)",
+      "PowerShell(npx wrangler login 2>&1)",
+      "PowerShell(npx wrangler login)",
+      "PowerShell(curl -s -o $null -w \"%{http_code} %{url_effective}\" https://hdrelhaj.com 2>&1)",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"https://hdrelhaj.com\" -UseBasicParsing; \"Status: $\\($r.StatusCode\\)\" } catch { \"Error: $_\" })",
+      "PowerShell(node -e \"require\\('sharp'\\)\" 2>$null)",
+      "PowerShell(npx --yes sharp-cli --input og.svg --output og.png 2>&1)",
+      "PowerShell(\\(Get-Item \"og.png\"\\).Length)",
+      "PowerShell(node -e \"const s=require\\('sharp'\\); s\\('hdr-photo.jpg'\\).metadata\\(\\).then\\(m=>console.log\\(m.width,m.height,m.format\\)\\)\")"
+    ]
+  }
+}
