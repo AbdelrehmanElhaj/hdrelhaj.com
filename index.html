@@ -309,9 +309,40 @@
     color: rgba(245,240,232,0.25);
   }
 
+  /* ── HAMBURGER ── */
+  .nav-toggle {
+    display: none;
+    flex-direction: column; justify-content: center; gap: 5px;
+    width: 32px; height: 32px; cursor: pointer;
+    background: none; border: none; padding: 4px;
+  }
+  .nav-toggle span {
+    display: block; height: 1px; background: var(--amber);
+    transition: transform 0.3s, opacity 0.3s;
+    transform-origin: center;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: flex; flex-direction: column; gap: 0;
+      position: fixed; top: 57px; left: 0; right: 0;
+      background: rgba(245, 240, 232, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 144, 42, 0.2);
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      list-style: none;
+    }
+    .nav-links.open { max-height: 300px; padding: 1rem 0; }
+    .nav-links li a {
+      display: block; padding: 0.85rem 1.5rem;
+      font-size: 13px; letter-spacing: 0.1em;
+    }
     .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 10rem; }
     .hero-right { display: none; }
     .hero-stats { left: 1.5rem; right: 1.5rem; flex-wrap: wrap; gap: 2rem; }
@@ -324,12 +355,15 @@
 
 <nav>
   <span class="nav-logo">hdrelhaj.com</span>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#certifications">Certifications</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <section class="hero" id="home">
@@ -520,5 +554,17 @@
   <span>Abdelrehman Elhaj © 2025</span>
 </footer>
 
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    toggle.classList.remove('open');
+    links.classList.remove('open');
+  }));
+</script>
 </body>
 </html>
