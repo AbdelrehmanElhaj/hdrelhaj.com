@@ -78,6 +78,14 @@
     font-weight: 400;
   }
   .nav-links a:hover { color: var(--amber); }
+  .nav-links a.active { color: var(--amber); }
+  .nav-links a.active::after {
+    content: '';
+    display: block; height: 1px;
+    background: var(--amber); margin-top: 2px;
+    animation: underline-in 0.2s ease forwards;
+  }
+  @keyframes underline-in { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
   /* ── HERO ── */
   .hero {
@@ -673,6 +681,7 @@
 </footer>
 
 <script>
+  // Mobile nav toggle
   const toggle = document.getElementById('navToggle');
   const links = document.getElementById('navLinks');
   toggle.addEventListener('click', () => {
@@ -683,6 +692,22 @@
     toggle.classList.remove('open');
     links.classList.remove('open');
   }));
+
+  // Scroll spy
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const sections = document.querySelectorAll('section[id]');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => observer.observe(s));
 </script>
 </body>
 </html>
