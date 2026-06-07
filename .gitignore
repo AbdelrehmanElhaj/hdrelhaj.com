@@ -1,2 +1,5 @@
 .wrangler/
 node_modules/
+make-og.js
+package.json
+package-lock.json

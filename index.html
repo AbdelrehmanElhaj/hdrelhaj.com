@@ -142,23 +142,26 @@
     position: relative; z-index: 2;
   }
   .hero-emblem {
-    width: 240px; height: 240px;
-    border: 1px solid rgba(212,144,42,0.3);
+    width: 260px; height: 260px;
+    border: 1px solid rgba(212,144,42,0.35);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     position: relative;
+    padding: 10px;
   }
   .hero-emblem::before {
     content: '';
-    position: absolute; inset: 12px;
+    position: absolute; inset: 8px;
     border: 1px solid rgba(212,144,42,0.15);
     border-radius: 50%;
+    pointer-events: none; z-index: 1;
   }
-  .hero-initials {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem; font-weight: 300;
-    color: var(--amber-light);
-    letter-spacing: -0.02em;
+  .hero-photo {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(15%);
   }
   .hero-stats {
     position: absolute; bottom: 3rem; left: 6rem; right: 6rem;
@@ -445,7 +448,7 @@
   </div>
   <div class="hero-right">
     <div class="hero-emblem">
-      <span class="hero-initials">AH</span>
+      <img src="hdr-photo.jpg" alt="Abdelrehman Elhaj" class="hero-photo">
     </div>
   </div>
   <div class="hero-stats">
