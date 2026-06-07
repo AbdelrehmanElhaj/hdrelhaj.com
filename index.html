@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdelrehman El-Haj — Systems & Cloud Engineer</title>
+<meta name="description" content="Systems & Cloud Engineer based in Riyadh, Saudi Arabia. AWS Solutions Architect, Kubernetes, Java/Spring Boot, PropTech platforms.">
+<link rel="canonical" href="https://hdrelhaj.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2d42;
+    --navy-light: #243b55;
+    --amber: #d4902a;
+    --amber-light: #e8b060;
+    --cream: #f5f0e8;
+    --cream-dark: #e8e0d0;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212, 144, 42, 0.2);
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    color: var(--amber);
+    font-weight: 300;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px; letter-spacing: 0.08em; text-decoration: none;
+    color: var(--muted); transition: color 0.2s;
+    font-weight: 400;
+  }
+  .nav-links a:hover { color: var(--amber); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 6rem;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(212,144,42,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-text { position: relative; z-index: 2; }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 0.2em;
+    color: var(--amber); text-transform: uppercase;
+    margin-bottom: 1.5rem; display: block;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+  .hero-name em { font-style: italic; color: var(--amber-light); }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    font-weight: 300;
+    color: rgba(245,240,232,0.55);
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-desc {
+    font-size: 15px; color: rgba(245,240,232,0.65);
+    max-width: 400px; line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 0.75rem 2rem;
+    border: 1px solid var(--amber);
+    color: var(--amber);
+    font-size: 13px; letter-spacing: 0.12em;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    transition: all 0.3s;
+    font-weight: 300;
+  }
+  .hero-cta:hover { background: var(--amber); color: var(--navy); }
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 2;
+  }
+  .hero-emblem {
+    width: 240px; height: 240px;
+    border: 1px solid rgba(212,144,42,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .hero-emblem::before {
+    content: '';
+    position: absolute; inset: 12px;
+    border: 1px solid rgba(212,144,42,0.15);
+    border-radius: 50%;
+  }
+  .hero-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300;
+    color: var(--amber-light);
+    letter-spacing: -0.02em;
+  }
+  .hero-stats {
+    position: absolute; bottom: 3rem; left: 6rem; right: 6rem;
+    display: flex; gap: 3rem;
+    border-top: 1px solid rgba(245,240,232,0.1);
+    padding-top: 2rem;
+  }
+  .stat-item { display: flex; flex-direction: column; gap: 4px; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300; color: var(--cream);
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em;
+    color: rgba(245,240,232,0.4);
+  }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 6rem; }
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: var(--amber); text-transform: uppercase;
+    margin-bottom: 0.75rem; display: block;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 300; color: var(--navy);
+    margin-bottom: 3.5rem;
+    line-height: 1.1;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--cream); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: white;
+    border: 1px solid var(--cream-dark);
+    padding: 1.75rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .skill-card:hover { border-color: var(--amber); transform: translateY(-3px); }
+  .skill-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--amber);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-icon {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em;
+    color: var(--amber); margin-bottom: 0.75rem; display: block;
+  }
+  .skill-name { font-size: 15px; font-weight: 500; color: var(--navy); margin-bottom: 0.5rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+  .skill-tag {
+    font-size: 11px; padding: 3px 10px;
+    background: var(--cream); color: var(--muted);
+    border: 1px solid var(--cream-dark);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--navy); }
+  #experience .section-title { color: var(--cream); }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: rgba(212,144,42,0.3);
+  }
+  .timeline-item { position: relative; padding: 0 0 3.5rem 2.5rem; }
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -4.5px; top: 8px;
+    width: 8px; height: 8px;
+    border: 1px solid var(--amber);
+    background: var(--navy);
+    transform: rotate(45deg);
+  }
+  .timeline-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em;
+    color: var(--amber); margin-bottom: 0.5rem;
+  }
+  .timeline-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400; color: var(--cream);
+    margin-bottom: 0.25rem;
+  }
+  .timeline-company { font-size: 13px; color: rgba(245,240,232,0.5); margin-bottom: 1rem; letter-spacing: 0.05em; }
+  .timeline-desc { font-size: 14px; color: rgba(245,240,232,0.6); line-height: 1.8; max-width: 560px; }
+
+  /* ── CERTIFICATIONS ── */
+  #certifications { background: white; }
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .cert-card {
+    border: 1px solid var(--cream-dark);
+    padding: 1.5rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+    transition: border-color 0.3s;
+    background: var(--cream);
+  }
+  .cert-card:hover { border-color: var(--amber); }
+  .cert-badge {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--amber);
+    letter-spacing: 0.05em; font-weight: 400;
+    text-align: center; line-height: 1.3;
+  }
+  .cert-name { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+  .cert-issuer { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+  .cert-status {
+    font-size: 10px; letter-spacing: 0.1em;
+    margin-top: 8px; display: inline-block;
+    padding: 2px 8px;
+    font-family: 'DM Mono', monospace;
+  }
+  .cert-status.active { background: #eaf3de; color: #3b6d11; }
+  .cert-status.pursuing { background: #faeeda; color: #633806; }
+  .cert-status.planned { background: #f1efe8; color: #5f5e5a; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--navy); text-align: center; }
+  #contact .section-title { color: var(--cream); }
+  .contact-sub {
+    font-size: 15px; color: rgba(245,240,232,0.5);
+    max-width: 420px; margin: -2.5rem auto 3rem;
+    line-height: 1.8;
+  }
+  .contact-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 0.75rem 1.75rem;
+    border: 1px solid rgba(212,144,42,0.4);
+    color: rgba(245,240,232,0.7);
+    font-size: 13px; letter-spacing: 0.1em;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    transition: all 0.3s; font-weight: 300;
+  }
+  .contact-link:hover { border-color: var(--amber); color: var(--amber); }
+
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(245,240,232,0.07);
+    padding: 1.5rem 6rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer span {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.25);
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 10rem; }
+    .hero-right { display: none; }
+    .hero-stats { left: 1.5rem; right: 1.5rem; flex-wrap: wrap; gap: 2rem; }
+    section { padding: 4rem 1.5rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">hdrelhaj.com</span>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <span class="hero-tag">Systems & Cloud Engineering</span>
+    <h1 class="hero-name">Abdelrehman<br><em>El-Haj</em></h1>
+    <p class="hero-title">Team Lead, Technical Support · Riyadh, SA</p>
+    <p class="hero-desc">Building resilient systems and cloud-native platforms — from PropTech infrastructure to enterprise ERP integrations, across AWS, Kubernetes, and beyond.</p>
+    <a href="#experience" class="hero-cta">View my work →</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-emblem">
+      <span class="hero-initials">AH</span>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">8+</span>
+      <span class="stat-label">Years experience</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">2</span>
+      <span class="stat-label">Active certs</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">KSA</span>
+      <span class="stat-label">Based in Riyadh</span>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <span class="section-tag">// 01 — expertise</span>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <span class="skill-icon">CLOUD</span>
+      <div class="skill-name">Cloud & Infrastructure</div>
+      <div class="skill-tags">
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">OCI</span>
+        <span class="skill-tag">IAM</span>
+        <span class="skill-tag">EC2 / S3</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">KUBE</span>
+      <div class="skill-name">Containers & Orchestration</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Kubernetes</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">CKA (pursuing)</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">CODE</span>
+      <div class="skill-name">Backend Development</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Spring Boot</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">REST APIs</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">ARCH</span>
+      <div class="skill-name">Systems Architecture</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Event-driven</span>
+        <span class="skill-tag">ERP / Odoo</span>
+        <span class="skill-tag">Integration</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">OPS</span>
+      <div class="skill-name">IT & Support Leadership</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Team Lead</span>
+        <span class="skill-tag">SLA Mgmt</span>
+        <span class="skill-tag">ITSM</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">LANG</span>
+      <div class="skill-name">Communication</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Arabic</span>
+        <span class="skill-tag">English</span>
+        <span class="skill-tag">Technical Writing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <span class="section-tag">// 02 — journey</span>
+  <h2 class="section-title">Work Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">2025 — Present</div>
+      <div class="timeline-role">Team Lead, Technical Support</div>
+      <div class="timeline-company">Proptech · Riyadh, Saudi Arabia</div>
+      <div class="timeline-desc">Leading technical support operations for a Saudi PropTech platform built on Odoo 17. Overseeing Ejar integrations, enterprise ERP modules, and platform scalability initiatives across procurement, inventory, fleet, and HR systems.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Prior Role</div>
+      <div class="timeline-role">Systems & Platform Engineer</div>
+      <div class="timeline-company">Proptech · Riyadh, Saudi Arabia</div>
+      <div class="timeline-desc">Backend platform work spanning cloud-native architecture, event-driven systems, and large-scale data seeding for PropTech demo environments. Led bulk migrations and system administration across multiple enterprise domains.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Earlier</div>
+      <div class="timeline-role">IT Support Engineer</div>
+      <div class="timeline-company">Salasa Logistics & Al-Othaim Holding</div>
+      <div class="timeline-desc">Delivered end-to-end IT support across logistics and retail operations — managing infrastructure, user systems, and service continuity in high-uptime environments.</div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <span class="section-tag">// 03 — credentials</span>
+  <h2 class="section-title">Certifications</h2>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-badge">AWS</div>
+      <div>
+        <div class="cert-name">AWS Solutions Architect – Associate</div>
+        <div class="cert-issuer">amazon web services</div>
+        <span class="cert-status active">ACTIVE</span>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">OCP</div>
+      <div>
+        <div class="cert-name">Oracle Certified Java Programmer</div>
+        <div class="cert-issuer">oracle</div>
+        <span class="cert-status active">ACTIVE</span>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">CKA</div>
+      <div>
+        <div class="cert-name">Certified Kubernetes Administrator</div>
+        <div class="cert-issuer">CNCF</div>
+        <span class="cert-status pursuing">IN PROGRESS</span>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">AWS<br>PRO</div>
+      <div>
+        <div class="cert-name">AWS Solutions Architect – Professional</div>
+        <div class="cert-issuer">amazon web services</div>
+        <span class="cert-status pursuing">IN PROGRESS</span>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">GEN<br>AI</div>
+      <div>
+        <div class="cert-name">AWS Generative AI Developer</div>
+        <div class="cert-issuer">amazon web services</div>
+        <span class="cert-status pursuing">IN PROGRESS</span>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">TF</div>
+      <div>
+        <div class="cert-name">HashiCorp Terraform Associate</div>
+        <div class="cert-issuer">hashicorp</div>
+        <span class="cert-status planned">PLANNED</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <span class="section-tag">// 04 — connect</span>
+  <h2 class="section-title">Get in touch</h2>
+  <p class="contact-sub">Open to collaborations, consulting, and interesting engineering challenges.</p>
+  <div class="contact-links">
+    <a href="mailto:hdr333@gmail.com" class="contact-link">✉ hdr333@gmail.com</a>
+    <a href="tel:+966573771364" class="contact-link">↗ +966 57 377 1364</a>
+    <a href="https://linkedin.com/in/abdelrehman-elhaj" class="contact-link">↗ LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  <span>hdrelhaj.com</span>
+  <span>Abdelrehman El-Haj © 2025</span>
+</footer>
+
+</body>
+</html>
