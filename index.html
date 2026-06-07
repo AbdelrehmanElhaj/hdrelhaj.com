@@ -209,6 +209,52 @@
     letter-spacing: 0.05em;
   }
 
+  /* ── PROJECTS ── */
+  #projects { background: var(--navy); }
+  #projects .section-title { color: var(--cream); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    border: 1px solid rgba(212,144,42,0.2);
+    padding: 2rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover { border-color: var(--amber); transform: translateY(-4px); }
+  .project-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: rgba(212,144,42,0.5); margin-bottom: 1.25rem;
+  }
+  .project-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400; color: var(--cream);
+    margin-bottom: 0.75rem; line-height: 1.2;
+  }
+  .project-desc {
+    font-size: 14px; color: rgba(245,240,232,0.55);
+    line-height: 1.8; flex: 1; margin-bottom: 1.5rem;
+  }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem; }
+  .project-tag {
+    font-size: 11px; padding: 3px 10px;
+    border: 1px solid rgba(212,144,42,0.25);
+    color: rgba(212,144,42,0.7);
+    font-family: 'DM Mono', monospace; letter-spacing: 0.05em;
+  }
+  .project-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 0.1em;
+    color: var(--amber); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 10px; }
+
   /* ── EXPERIENCE ── */
   #experience { background: var(--navy); }
   #experience .section-title { color: var(--cream); }
@@ -356,6 +402,7 @@
 <nav>
   <span class="nav-logo">hdrelhaj.com</span>
   <ul class="nav-links" id="navLinks">
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#certifications">Certifications</a></li>
@@ -395,8 +442,54 @@
   </div>
 </section>
 
+<section id="projects">
+  <span class="section-tag">// 01 — work</span>
+  <h2 class="section-title">Selected Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-num">01 / 03</div>
+      <div class="project-name">Ejar Integration Service</div>
+      <div class="project-desc">Real-time bridge between Odoo 17 and the Saudi government's Ejar rental platform. Handles contract lifecycle events, automated status sync, and error recovery — processing thousands of tenancy records across the PropTech portfolio.</div>
+      <div class="project-stack">
+        <span class="project-tag">Java</span>
+        <span class="project-tag">Spring Boot</span>
+        <span class="project-tag">Odoo 17</span>
+        <span class="project-tag">REST APIs</span>
+        <span class="project-tag">AWS</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">02 / 03</div>
+      <div class="project-name">ERP Demo Seeding Engine</div>
+      <div class="project-desc">Bulk data generation and migration tooling for PropTech demo environments. Seeds tens of thousands of realistic property, tenant, and transaction records across procurement, inventory, fleet, and HR modules — cutting environment setup time from days to hours.</div>
+      <div class="project-stack">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Odoo ORM</span>
+        <span class="project-tag">PostgreSQL</span>
+        <span class="project-tag">Docker</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03 / 03</div>
+      <div class="project-name">Cloud Infrastructure Baseline</div>
+      <div class="project-desc">Designed and deployed a multi-environment AWS infrastructure baseline for the PropTech platform — covering VPC architecture, IAM roles, S3 lifecycle policies, EC2 auto-scaling groups, and OCI cross-cloud connectivity for legacy workloads.</div>
+      <div class="project-stack">
+        <span class="project-tag">AWS</span>
+        <span class="project-tag">OCI</span>
+        <span class="project-tag">IAM</span>
+        <span class="project-tag">EC2</span>
+        <span class="project-tag">Terraform</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section id="skills">
-  <span class="section-tag">// 01 — expertise</span>
+  <span class="section-tag">// 02 — expertise</span>
   <h2 class="section-title">Technical Skills</h2>
   <div class="skills-grid">
     <div class="skill-card">
@@ -459,7 +552,7 @@
 </section>
 
 <section id="experience">
-  <span class="section-tag">// 02 — journey</span>
+  <span class="section-tag">// 03 — journey</span>
   <h2 class="section-title">Work Experience</h2>
   <div class="timeline">
     <div class="timeline-item">
@@ -484,7 +577,7 @@
 </section>
 
 <section id="certifications">
-  <span class="section-tag">// 03 — credentials</span>
+  <span class="section-tag">// 04 — credentials</span>
   <h2 class="section-title">Certifications</h2>
   <div class="certs-grid">
     <div class="cert-card">
@@ -539,7 +632,7 @@
 </section>
 
 <section id="contact">
-  <span class="section-tag">// 04 — connect</span>
+  <span class="section-tag">// 05 — connect</span>
   <h2 class="section-title">Get in touch</h2>
   <p class="contact-sub">Open to collaborations, consulting, and interesting engineering challenges.</p>
   <div class="contact-links">
