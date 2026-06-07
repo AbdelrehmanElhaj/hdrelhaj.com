@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,7 @@
 <meta name="twitter:description" content="Systems & Cloud Engineer based in Riyadh, Saudi Arabia. AWS Solutions Architect, Kubernetes, Java/Spring Boot, PropTech platforms.">
 <meta name="twitter:image" content="https://hdrelhaj.com/og.png">
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -71,6 +71,7 @@
     color: var(--amber);
     font-weight: 300;
   }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
     font-size: 13px; letter-spacing: 0.08em; text-decoration: none;
@@ -86,6 +87,16 @@
     animation: underline-in 0.2s ease forwards;
   }
   @keyframes underline-in { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  .lang-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.12em;
+    color: var(--amber); background: none;
+    border: 1px solid rgba(212,144,42,0.45);
+    padding: 4px 10px; cursor: pointer;
+    transition: all 0.2s; line-height: 1;
+  }
+  .lang-btn:hover { background: var(--amber); color: var(--navy); }
 
   /* ── HERO ── */
   .hero {
@@ -279,14 +290,6 @@
     color: rgba(212,144,42,0.7);
     font-family: 'DM Mono', monospace; letter-spacing: 0.05em;
   }
-  .project-link {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px; letter-spacing: 0.1em;
-    color: var(--amber); text-decoration: none;
-    display: inline-flex; align-items: center; gap: 6px;
-    transition: gap 0.2s;
-  }
-  .project-link:hover { gap: 10px; }
 
   /* ── EXPERIENCE ── */
   #experience { background: var(--navy); }
@@ -426,11 +429,6 @@
   .form-msg.success { color: #7ec87e; border: 1px solid rgba(126,200,126,0.3); }
   .form-msg.error { color: #e07070; border: 1px solid rgba(224,112,112,0.3); }
 
-  @media (max-width: 900px) {
-    .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
-    .form-row { grid-template-columns: 1fr; }
-  }
-
   footer {
     background: var(--navy);
     border-top: 1px solid rgba(245,240,232,0.07);
@@ -459,6 +457,61 @@
   .nav-toggle.open span:nth-child(2) { opacity: 0; }
   .nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
+  /* ── RTL / ARABIC ── */
+  html[dir="rtl"] body { font-family: 'Tajawal', sans-serif; }
+
+  html[dir="rtl"] .hero-name {
+    font-family: 'Amiri', serif;
+    font-size: clamp(3.2rem, 5.5vw, 6rem);
+    line-height: 1.2;
+    letter-spacing: 0;
+  }
+  html[dir="rtl"] .hero-name em { font-style: italic; }
+  html[dir="rtl"] .hero-title { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: clamp(1rem, 2vw, 1.4rem); }
+  html[dir="rtl"] .hero-tag { letter-spacing: 0; font-family: 'Tajawal', sans-serif; text-transform: none; font-size: 13px; }
+  html[dir="rtl"] .hero-desc { font-size: 16px; line-height: 2; }
+  html[dir="rtl"] .hero-cta { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 15px; }
+  html[dir="rtl"] .hero::before { background: radial-gradient(ellipse at 30% 50%, rgba(212,144,42,0.08) 0%, transparent 60%); }
+
+  html[dir="rtl"] .section-title { font-family: 'Amiri', serif; letter-spacing: 0; font-size: clamp(2.2rem, 3.5vw, 3.4rem); }
+  html[dir="rtl"] .section-tag { font-family: 'Tajawal', sans-serif; letter-spacing: 0; text-transform: none; font-size: 13px; }
+
+  html[dir="rtl"] .stat-label { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 12px; }
+  html[dir="rtl"] .stat-num { font-family: 'Tajawal', sans-serif; }
+
+  html[dir="rtl"] .skill-name { font-family: 'Tajawal', sans-serif; font-size: 16px; }
+  html[dir="rtl"] .skill-tag { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 12px; }
+  html[dir="rtl"] .skill-card::before { transform-origin: right; }
+
+  html[dir="rtl"] .project-name { font-family: 'Amiri', serif; letter-spacing: 0; font-size: 1.6rem; }
+  html[dir="rtl"] .project-desc { font-size: 15px; line-height: 2; }
+  html[dir="rtl"] .project-tag { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 12px; }
+  html[dir="rtl"] .project-num { font-family: 'Tajawal', sans-serif; letter-spacing: 0; }
+
+  html[dir="rtl"] .timeline { padding-left: 0; padding-right: 2rem; }
+  html[dir="rtl"] .timeline::before { left: auto; right: 0; }
+  html[dir="rtl"] .timeline-item { padding: 0 2.5rem 3.5rem 0; }
+  html[dir="rtl"] .timeline-item::before { left: auto; right: -4.5px; }
+  html[dir="rtl"] .timeline-role { font-family: 'Amiri', serif; letter-spacing: 0; font-size: 1.7rem; }
+  html[dir="rtl"] .timeline-date { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 13px; }
+  html[dir="rtl"] .timeline-company { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 14px; }
+  html[dir="rtl"] .timeline-desc { font-size: 15px; line-height: 2; }
+
+  html[dir="rtl"] .cert-name { font-family: 'Tajawal', sans-serif; font-size: 15px; }
+  html[dir="rtl"] .cert-issuer { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 13px; }
+  html[dir="rtl"] .cert-status { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 11px; }
+
+  html[dir="rtl"] .contact-sub { font-size: 16px; line-height: 2; }
+  html[dir="rtl"] .contact-link { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 14px; }
+  html[dir="rtl"] .form-field label { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 13px; }
+  html[dir="rtl"] .form-field input,
+  html[dir="rtl"] .form-field textarea { font-family: 'Tajawal', sans-serif; font-size: 15px; }
+  html[dir="rtl"] .form-submit { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 15px; }
+  html[dir="rtl"] .form-msg { font-family: 'Tajawal', sans-serif; letter-spacing: 0; }
+
+  html[dir="rtl"] footer span { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 13px; }
+  html[dir="rtl"] .nav-links a { letter-spacing: 0; font-size: 14px; font-family: 'Tajawal', sans-serif; }
+
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-toggle { display: flex; }
@@ -481,6 +534,8 @@
     .hero-right { display: none; }
     .hero-stats { left: 1.5rem; right: 1.5rem; flex-wrap: wrap; gap: 2rem; }
     section { padding: 4rem 1.5rem; }
+    .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
@@ -489,25 +544,28 @@
 
 <nav>
   <span class="nav-logo">hdrelhaj.com</span>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#projects" data-key="nav-projects">Projects</a></li>
+      <li><a href="#skills" data-key="nav-skills">Skills</a></li>
+      <li><a href="#experience" data-key="nav-experience">Experience</a></li>
+      <li><a href="#certifications" data-key="nav-certs">Certifications</a></li>
+      <li><a href="#contact" data-key="nav-contact">Contact</a></li>
+    </ul>
+    <button class="lang-btn" id="langBtn">AR</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <section class="hero" id="home">
   <div class="hero-text">
-    <span class="hero-tag">Systems & Cloud Engineering</span>
-    <h1 class="hero-name">Abdelrehman<br><em>Elhaj</em></h1>
-    <p class="hero-title">Team Lead, Technical Support · Riyadh, SA</p>
-    <p class="hero-desc">Building resilient systems and cloud-native platforms — from PropTech infrastructure to enterprise ERP integrations, across AWS, Kubernetes, and beyond.</p>
-    <a href="#experience" class="hero-cta">View my work →</a>
+    <span class="hero-tag" data-key="hero-tag">Systems & Cloud Engineering</span>
+    <h1 class="hero-name" data-key="hero-name">Abdelrehman<br><em>Elhaj</em></h1>
+    <p class="hero-title" data-key="hero-title">Team Lead, Technical Support · Riyadh, SA</p>
+    <p class="hero-desc" data-key="hero-desc">Building resilient systems and cloud-native platforms — from PropTech infrastructure to enterprise ERP integrations, across AWS, Kubernetes, and beyond.</p>
+    <a href="#experience" class="hero-cta" data-key="hero-cta">View my work →</a>
   </div>
   <div class="hero-right">
     <div class="hero-emblem">
@@ -517,28 +575,28 @@
   <div class="hero-stats">
     <div class="stat-item">
       <span class="stat-num">8+</span>
-      <span class="stat-label">Years experience</span>
+      <span class="stat-label" data-key="stat-1-label">Years experience</span>
     </div>
     <div class="stat-item">
       <span class="stat-num">2</span>
-      <span class="stat-label">Active certs</span>
+      <span class="stat-label" data-key="stat-2-label">Active certs</span>
     </div>
     <div class="stat-item">
       <span class="stat-num">KSA</span>
-      <span class="stat-label">Based in Riyadh</span>
+      <span class="stat-label" data-key="stat-3-label">Based in Riyadh</span>
     </div>
   </div>
 </section>
 
 <section id="projects">
-  <span class="section-tag">// 01 — work</span>
-  <h2 class="section-title">Selected Projects</h2>
+  <span class="section-tag" data-key="proj-tag">// 01 — work</span>
+  <h2 class="section-title" data-key="proj-title">Selected Projects</h2>
   <div class="projects-grid">
 
     <div class="project-card">
-      <div class="project-num">01 / 03</div>
-      <div class="project-name">Ejar Integration Service</div>
-      <div class="project-desc">Real-time bridge between Odoo 17 and the Saudi government's Ejar rental platform. Handles contract lifecycle events, automated status sync, and error recovery — processing thousands of tenancy records across the PropTech portfolio.</div>
+      <div class="project-num" data-key="p1-num">01 / 03</div>
+      <div class="project-name" data-key="p1-name">Ejar Integration Service</div>
+      <div class="project-desc" data-key="p1-desc">Real-time bridge between Odoo 17 and the Saudi government's Ejar rental platform. Handles contract lifecycle events, automated status sync, and error recovery — processing thousands of tenancy records across the PropTech portfolio.</div>
       <div class="project-stack">
         <span class="project-tag">Java</span>
         <span class="project-tag">Spring Boot</span>
@@ -549,9 +607,9 @@
     </div>
 
     <div class="project-card">
-      <div class="project-num">02 / 03</div>
-      <div class="project-name">ERP Demo Seeding Engine</div>
-      <div class="project-desc">Bulk data generation and migration tooling for PropTech demo environments. Seeds tens of thousands of realistic property, tenant, and transaction records across procurement, inventory, fleet, and HR modules — cutting environment setup time from days to hours.</div>
+      <div class="project-num" data-key="p2-num">02 / 03</div>
+      <div class="project-name" data-key="p2-name">ERP Demo Seeding Engine</div>
+      <div class="project-desc" data-key="p2-desc">Bulk data generation and migration tooling for PropTech demo environments. Seeds tens of thousands of realistic property, tenant, and transaction records across procurement, inventory, fleet, and HR modules — cutting environment setup time from days to hours.</div>
       <div class="project-stack">
         <span class="project-tag">Python</span>
         <span class="project-tag">Odoo ORM</span>
@@ -561,9 +619,9 @@
     </div>
 
     <div class="project-card">
-      <div class="project-num">03 / 03</div>
-      <div class="project-name">Cloud Infrastructure Baseline</div>
-      <div class="project-desc">Designed and deployed a multi-environment AWS infrastructure baseline for the PropTech platform — covering VPC architecture, IAM roles, S3 lifecycle policies, EC2 auto-scaling groups, and OCI cross-cloud connectivity for legacy workloads.</div>
+      <div class="project-num" data-key="p3-num">03 / 03</div>
+      <div class="project-name" data-key="p3-name">Cloud Infrastructure Baseline</div>
+      <div class="project-desc" data-key="p3-desc">Designed and deployed a multi-environment AWS infrastructure baseline for the PropTech platform — covering VPC architecture, IAM roles, S3 lifecycle policies, EC2 auto-scaling groups, and OCI cross-cloud connectivity for legacy workloads.</div>
       <div class="project-stack">
         <span class="project-tag">AWS</span>
         <span class="project-tag">OCI</span>
@@ -577,13 +635,13 @@
 </section>
 
 <section id="skills">
-  <span class="section-tag">// 02 — expertise</span>
-  <h2 class="section-title">Technical Skills</h2>
+  <span class="section-tag" data-key="skills-tag">// 02 — expertise</span>
+  <h2 class="section-title" data-key="skills-title">Technical Skills</h2>
   <div class="skills-grid">
     <div class="skill-card">
       <span class="skill-icon">CLOUD</span>
-      <div class="skill-name">Cloud & Infrastructure</div>
-      <div class="skill-tags">
+      <div class="skill-name" data-key="skill-1-name">Cloud & Infrastructure</div>
+      <div class="skill-tags" data-key="skill-1-tags">
         <span class="skill-tag">AWS</span>
         <span class="skill-tag">OCI</span>
         <span class="skill-tag">IAM</span>
@@ -592,8 +650,8 @@
     </div>
     <div class="skill-card">
       <span class="skill-icon">KUBE</span>
-      <div class="skill-name">Containers & Orchestration</div>
-      <div class="skill-tags">
+      <div class="skill-name" data-key="skill-2-name">Containers & Orchestration</div>
+      <div class="skill-tags" data-key="skill-2-tags">
         <span class="skill-tag">Kubernetes</span>
         <span class="skill-tag">Docker</span>
         <span class="skill-tag">CKA (pursuing)</span>
@@ -601,8 +659,8 @@
     </div>
     <div class="skill-card">
       <span class="skill-icon">CODE</span>
-      <div class="skill-name">Backend Development</div>
-      <div class="skill-tags">
+      <div class="skill-name" data-key="skill-3-name">Backend Development</div>
+      <div class="skill-tags" data-key="skill-3-tags">
         <span class="skill-tag">Java</span>
         <span class="skill-tag">Spring Boot</span>
         <span class="skill-tag">Python</span>
@@ -611,8 +669,8 @@
     </div>
     <div class="skill-card">
       <span class="skill-icon">ARCH</span>
-      <div class="skill-name">Systems Architecture</div>
-      <div class="skill-tags">
+      <div class="skill-name" data-key="skill-4-name">Systems Architecture</div>
+      <div class="skill-tags" data-key="skill-4-tags">
         <span class="skill-tag">Event-driven</span>
         <span class="skill-tag">ERP / Odoo</span>
         <span class="skill-tag">Integration</span>
@@ -620,8 +678,8 @@
     </div>
     <div class="skill-card">
       <span class="skill-icon">OPS</span>
-      <div class="skill-name">IT & Support Leadership</div>
-      <div class="skill-tags">
+      <div class="skill-name" data-key="skill-5-name">IT & Support Leadership</div>
+      <div class="skill-tags" data-key="skill-5-tags">
         <span class="skill-tag">Team Lead</span>
         <span class="skill-tag">SLA Mgmt</span>
         <span class="skill-tag">ITSM</span>
@@ -629,8 +687,8 @@
     </div>
     <div class="skill-card">
       <span class="skill-icon">LANG</span>
-      <div class="skill-name">Communication</div>
-      <div class="skill-tags">
+      <div class="skill-name" data-key="skill-6-name">Communication</div>
+      <div class="skill-tags" data-key="skill-6-tags">
         <span class="skill-tag">Arabic</span>
         <span class="skill-tag">English</span>
         <span class="skill-tag">Technical Writing</span>
@@ -640,124 +698,265 @@
 </section>
 
 <section id="experience">
-  <span class="section-tag">// 03 — journey</span>
-  <h2 class="section-title">Work Experience</h2>
+  <span class="section-tag" data-key="exp-tag">// 03 — journey</span>
+  <h2 class="section-title" data-key="exp-title">Work Experience</h2>
   <div class="timeline">
     <div class="timeline-item">
-      <div class="timeline-date">2025 — Present</div>
-      <div class="timeline-role">Team Lead, Technical Support</div>
-      <div class="timeline-company">Proptech · Riyadh, Saudi Arabia</div>
-      <div class="timeline-desc">Leading technical support operations for a Saudi PropTech platform built on Odoo 17. Overseeing Ejar integrations, enterprise ERP modules, and platform scalability initiatives across procurement, inventory, fleet, and HR systems.</div>
+      <div class="timeline-date" data-key="exp-1-date">2025 — Present</div>
+      <div class="timeline-role" data-key="exp-1-role">Team Lead, Technical Support</div>
+      <div class="timeline-company" data-key="exp-1-company">Proptech · Riyadh, Saudi Arabia</div>
+      <div class="timeline-desc" data-key="exp-1-desc">Leading technical support operations for a Saudi PropTech platform built on Odoo 17. Overseeing Ejar integrations, enterprise ERP modules, and platform scalability initiatives across procurement, inventory, fleet, and HR systems.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-date">Prior Role</div>
-      <div class="timeline-role">Systems & Platform Engineer</div>
-      <div class="timeline-company">Proptech · Riyadh, Saudi Arabia</div>
-      <div class="timeline-desc">Backend platform work spanning cloud-native architecture, event-driven systems, and large-scale data seeding for PropTech demo environments. Led bulk migrations and system administration across multiple enterprise domains.</div>
+      <div class="timeline-date" data-key="exp-2-date">Prior Role</div>
+      <div class="timeline-role" data-key="exp-2-role">Systems & Platform Engineer</div>
+      <div class="timeline-company" data-key="exp-2-company">Proptech · Riyadh, Saudi Arabia</div>
+      <div class="timeline-desc" data-key="exp-2-desc">Backend platform work spanning cloud-native architecture, event-driven systems, and large-scale data seeding for PropTech demo environments. Led bulk migrations and system administration across multiple enterprise domains.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-date">Earlier</div>
-      <div class="timeline-role">IT Support Engineer</div>
-      <div class="timeline-company">Salasa Logistics & Al-Othaim Holding</div>
-      <div class="timeline-desc">Delivered end-to-end IT support across logistics and retail operations — managing infrastructure, user systems, and service continuity in high-uptime environments.</div>
+      <div class="timeline-date" data-key="exp-3-date">Earlier</div>
+      <div class="timeline-role" data-key="exp-3-role">IT Support Engineer</div>
+      <div class="timeline-company" data-key="exp-3-company">Salasa Logistics & Al-Othaim Holding</div>
+      <div class="timeline-desc" data-key="exp-3-desc">Delivered end-to-end IT support across logistics and retail operations — managing infrastructure, user systems, and service continuity in high-uptime environments.</div>
     </div>
   </div>
 </section>
 
 <section id="certifications">
-  <span class="section-tag">// 04 — credentials</span>
-  <h2 class="section-title">Certifications</h2>
+  <span class="section-tag" data-key="certs-tag">// 04 — credentials</span>
+  <h2 class="section-title" data-key="certs-title">Certifications</h2>
   <div class="certs-grid">
     <div class="cert-card">
       <div class="cert-badge">AWS</div>
       <div>
         <div class="cert-name">AWS Solutions Architect – Associate</div>
-        <div class="cert-issuer">amazon web services</div>
-        <span class="cert-status active">ACTIVE</span>
+        <div class="cert-issuer" data-key="cert-1-issuer">amazon web services</div>
+        <span class="cert-status active" data-key="cert-1-status">ACTIVE</span>
       </div>
     </div>
     <div class="cert-card">
       <div class="cert-badge">OCP</div>
       <div>
         <div class="cert-name">Oracle Certified Java Programmer</div>
-        <div class="cert-issuer">oracle</div>
-        <span class="cert-status active">ACTIVE</span>
+        <div class="cert-issuer" data-key="cert-2-issuer">oracle</div>
+        <span class="cert-status active" data-key="cert-2-status">ACTIVE</span>
       </div>
     </div>
     <div class="cert-card">
       <div class="cert-badge">CKA</div>
       <div>
         <div class="cert-name">Certified Kubernetes Administrator</div>
-        <div class="cert-issuer">CNCF</div>
-        <span class="cert-status pursuing">IN PROGRESS</span>
+        <div class="cert-issuer" data-key="cert-3-issuer">CNCF</div>
+        <span class="cert-status pursuing" data-key="cert-3-status">IN PROGRESS</span>
       </div>
     </div>
     <div class="cert-card">
       <div class="cert-badge">AWS<br>PRO</div>
       <div>
         <div class="cert-name">AWS Solutions Architect – Professional</div>
-        <div class="cert-issuer">amazon web services</div>
-        <span class="cert-status pursuing">IN PROGRESS</span>
+        <div class="cert-issuer" data-key="cert-4-issuer">amazon web services</div>
+        <span class="cert-status pursuing" data-key="cert-4-status">IN PROGRESS</span>
       </div>
     </div>
     <div class="cert-card">
       <div class="cert-badge">GEN<br>AI</div>
       <div>
         <div class="cert-name">AWS Generative AI Developer</div>
-        <div class="cert-issuer">amazon web services</div>
-        <span class="cert-status pursuing">IN PROGRESS</span>
+        <div class="cert-issuer" data-key="cert-5-issuer">amazon web services</div>
+        <span class="cert-status pursuing" data-key="cert-5-status">IN PROGRESS</span>
       </div>
     </div>
     <div class="cert-card">
       <div class="cert-badge">TF</div>
       <div>
         <div class="cert-name">HashiCorp Terraform Associate</div>
-        <div class="cert-issuer">hashicorp</div>
-        <span class="cert-status planned">PLANNED</span>
+        <div class="cert-issuer" data-key="cert-6-issuer">hashicorp</div>
+        <span class="cert-status planned" data-key="cert-6-status">PLANNED</span>
       </div>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <span class="section-tag">// 05 — connect</span>
-  <h2 class="section-title">Get in touch</h2>
-  <p class="contact-sub">Open to collaborations, consulting, and interesting engineering challenges.</p>
+  <span class="section-tag" data-key="contact-tag">// 05 — connect</span>
+  <h2 class="section-title" data-key="contact-title">Get in touch</h2>
+  <p class="contact-sub" data-key="contact-sub">Open to collaborations, consulting, and interesting engineering challenges.</p>
   <div class="contact-layout">
     <div class="contact-links">
       <a href="mailto:hdr333@gmail.com" class="contact-link">✉ hdr333@gmail.com</a>
       <a href="tel:+966573771364" class="contact-link">↗ +966 57 377 1364</a>
-      <a href="https://www.linkedin.com/in/abdelrehman-elhaj-972a49257/" class="contact-link" target="_blank" rel="noopener">↗ LinkedIn</a>
+      <a href="https://www.linkedin.com/in/abdelrehman-elhaj-972a49257/" class="contact-link" target="_blank" rel="noopener" data-key="contact-linkedin">↗ LinkedIn</a>
     </div>
     <form class="contact-form" id="form">
       <input type="hidden" name="subject" value="New message from hdrelhaj.com">
       <input type="checkbox" name="botcheck" style="display:none">
       <div class="form-row">
         <div class="form-field">
-          <label for="cf-name">Name</label>
+          <label for="cf-name" data-key="form-name-label">Name</label>
           <input type="text" id="cf-name" name="name" placeholder="Your name" required>
         </div>
         <div class="form-field">
-          <label for="cf-email">Email</label>
+          <label for="cf-email" data-key="form-email-label">Email</label>
           <input type="email" id="cf-email" name="email" placeholder="your@email.com" required>
         </div>
       </div>
       <div class="form-field">
-        <label for="cf-msg">Message</label>
+        <label for="cf-msg" data-key="form-msg-label">Message</label>
         <textarea id="cf-msg" name="message" rows="5" placeholder="What's on your mind?" required></textarea>
       </div>
       <div class="form-msg" id="formMsg"></div>
-      <button type="submit" class="form-submit">Send message →</button>
+      <button type="submit" class="form-submit" data-key="form-submit">Send message →</button>
     </form>
   </div>
 </section>
 
 <footer>
   <span>hdrelhaj.com</span>
-  <span>Abdelrehman Elhaj © 2025</span>
+  <span data-key="footer-copy">Abdelrehman Elhaj © 2025</span>
 </footer>
 
 <script>
+  // ── Translations ──
+  const t = {
+    en: {
+      'nav-projects': 'Projects', 'nav-skills': 'Skills', 'nav-experience': 'Experience',
+      'nav-certs': 'Certifications', 'nav-contact': 'Contact',
+      'hero-tag': 'Systems & Cloud Engineering',
+      'hero-name': 'Abdelrehman<br><em>Elhaj</em>',
+      'hero-title': 'Team Lead, Technical Support · Riyadh, SA',
+      'hero-desc': 'Building resilient systems and cloud-native platforms — from PropTech infrastructure to enterprise ERP integrations, across AWS, Kubernetes, and beyond.',
+      'hero-cta': 'View my work →',
+      'stat-1-label': 'Years experience', 'stat-2-label': 'Active certs', 'stat-3-label': 'Based in Riyadh',
+      'proj-tag': '// 01 — work', 'proj-title': 'Selected Projects',
+      'p1-num': '01 / 03', 'p1-name': 'Ejar Integration Service',
+      'p1-desc': 'Real-time bridge between Odoo 17 and the Saudi government\'s Ejar rental platform. Handles contract lifecycle events, automated status sync, and error recovery — processing thousands of tenancy records across the PropTech portfolio.',
+      'p2-num': '02 / 03', 'p2-name': 'ERP Demo Seeding Engine',
+      'p2-desc': 'Bulk data generation and migration tooling for PropTech demo environments. Seeds tens of thousands of realistic property, tenant, and transaction records across procurement, inventory, fleet, and HR modules — cutting environment setup time from days to hours.',
+      'p3-num': '03 / 03', 'p3-name': 'Cloud Infrastructure Baseline',
+      'p3-desc': 'Designed and deployed a multi-environment AWS infrastructure baseline for the PropTech platform — covering VPC architecture, IAM roles, S3 lifecycle policies, EC2 auto-scaling groups, and OCI cross-cloud connectivity for legacy workloads.',
+      'skills-tag': '// 02 — expertise', 'skills-title': 'Technical Skills',
+      'skill-1-name': 'Cloud & Infrastructure',
+      'skill-1-tags': '<span class="skill-tag">AWS</span><span class="skill-tag">OCI</span><span class="skill-tag">IAM</span><span class="skill-tag">EC2 / S3</span>',
+      'skill-2-name': 'Containers & Orchestration',
+      'skill-2-tags': '<span class="skill-tag">Kubernetes</span><span class="skill-tag">Docker</span><span class="skill-tag">CKA (pursuing)</span>',
+      'skill-3-name': 'Backend Development',
+      'skill-3-tags': '<span class="skill-tag">Java</span><span class="skill-tag">Spring Boot</span><span class="skill-tag">Python</span><span class="skill-tag">REST APIs</span>',
+      'skill-4-name': 'Systems Architecture',
+      'skill-4-tags': '<span class="skill-tag">Event-driven</span><span class="skill-tag">ERP / Odoo</span><span class="skill-tag">Integration</span>',
+      'skill-5-name': 'IT & Support Leadership',
+      'skill-5-tags': '<span class="skill-tag">Team Lead</span><span class="skill-tag">SLA Mgmt</span><span class="skill-tag">ITSM</span>',
+      'skill-6-name': 'Communication',
+      'skill-6-tags': '<span class="skill-tag">Arabic</span><span class="skill-tag">English</span><span class="skill-tag">Technical Writing</span>',
+      'exp-tag': '// 03 — journey', 'exp-title': 'Work Experience',
+      'exp-1-date': '2025 — Present', 'exp-1-role': 'Team Lead, Technical Support',
+      'exp-1-company': 'Proptech · Riyadh, Saudi Arabia',
+      'exp-1-desc': 'Leading technical support operations for a Saudi PropTech platform built on Odoo 17. Overseeing Ejar integrations, enterprise ERP modules, and platform scalability initiatives across procurement, inventory, fleet, and HR systems.',
+      'exp-2-date': 'Prior Role', 'exp-2-role': 'Systems & Platform Engineer',
+      'exp-2-company': 'Proptech · Riyadh, Saudi Arabia',
+      'exp-2-desc': 'Backend platform work spanning cloud-native architecture, event-driven systems, and large-scale data seeding for PropTech demo environments. Led bulk migrations and system administration across multiple enterprise domains.',
+      'exp-3-date': 'Earlier', 'exp-3-role': 'IT Support Engineer',
+      'exp-3-company': 'Salasa Logistics & Al-Othaim Holding',
+      'exp-3-desc': 'Delivered end-to-end IT support across logistics and retail operations — managing infrastructure, user systems, and service continuity in high-uptime environments.',
+      'certs-tag': '// 04 — credentials', 'certs-title': 'Certifications',
+      'cert-1-issuer': 'amazon web services', 'cert-1-status': 'ACTIVE',
+      'cert-2-issuer': 'oracle', 'cert-2-status': 'ACTIVE',
+      'cert-3-issuer': 'CNCF', 'cert-3-status': 'IN PROGRESS',
+      'cert-4-issuer': 'amazon web services', 'cert-4-status': 'IN PROGRESS',
+      'cert-5-issuer': 'amazon web services', 'cert-5-status': 'IN PROGRESS',
+      'cert-6-issuer': 'hashicorp', 'cert-6-status': 'PLANNED',
+      'contact-tag': '// 05 — connect', 'contact-title': 'Get in touch',
+      'contact-sub': 'Open to collaborations, consulting, and interesting engineering challenges.',
+      'contact-linkedin': '↗ LinkedIn',
+      'form-name-label': 'Name', 'form-name-ph': 'Your name',
+      'form-email-label': 'Email', 'form-email-ph': 'your@email.com',
+      'form-msg-label': 'Message', 'form-msg-ph': "What's on your mind?",
+      'form-submit': 'Send message →',
+      'footer-copy': 'Abdelrehman Elhaj © 2025',
+      'msg-success': "Message sent — I'll be in touch soon.",
+      'msg-error': 'Something went wrong. Please try again.',
+    },
+    ar: {
+      'nav-projects': 'المشاريع', 'nav-skills': 'المهارات', 'nav-experience': 'الخبرة',
+      'nav-certs': 'الشهادات', 'nav-contact': 'تواصل',
+      'hero-tag': 'هندسة الأنظمة والحوسبة السحابية',
+      'hero-name': 'عبدالرحمن<br><em>الحاج</em>',
+      'hero-title': 'قائد فريق الدعم التقني · الرياض، المملكة العربية السعودية',
+      'hero-desc': 'بناء أنظمة متينة ومنصات سحابية حديثة — من البنية التحتية لمنصة البروبتك إلى تكاملات ERP المؤسسية، عبر AWS وKubernetes والمزيد.',
+      'hero-cta': 'استعرض أعمالي ←',
+      'stat-1-label': 'سنوات خبرة', 'stat-2-label': 'شهادات فعّالة', 'stat-3-label': 'مقرّ العمل الرياض',
+      'proj-tag': '// 01 — أعمال', 'proj-title': 'مشاريع مختارة',
+      'p1-num': '٠١ / ٠٣', 'p1-name': 'خدمة تكامل إيجار',
+      'p1-desc': 'جسر آني بين Odoo 17 ومنصة إيجار الحكومية السعودية. يتولى إدارة دورة حياة العقود، والمزامنة الآلية للحالات، واستعادة الأخطاء — ويعالج آلاف سجلات الإيجار عبر محفظة البروبتك.',
+      'p2-num': '٠٢ / ٠٣', 'p2-name': 'محرك بيانات العروض التجريبية',
+      'p2-desc': 'أدوات توليد وهجرة البيانات بالجملة لبيئات عرض البروبتك التجريبية. تُنشئ عشرات الآلاف من سجلات العقارات والمستأجرين والمعاملات الواقعية عبر وحدات المشتريات والمخزون والأسطول والموارد البشرية — مما يُقلّص وقت إعداد البيئة من أيام إلى ساعات.',
+      'p3-num': '٠٣ / ٠٣', 'p3-name': 'البنية التحتية السحابية الأساسية',
+      'p3-desc': 'تصميم ونشر بنية AWS تحتية متعددة البيئات لمنصة البروبتك — تشمل بنية VPC وأدوار IAM وسياسات دورة حياة S3 ومجموعات التحجيم التلقائي EC2 والتوصيل المتبادل مع OCI للأعباء التراثية.',
+      'skills-tag': '// 02 — خبرات', 'skills-title': 'المهارات التقنية',
+      'skill-1-name': 'السحابة والبنية التحتية',
+      'skill-1-tags': '<span class="skill-tag">AWS</span><span class="skill-tag">OCI</span><span class="skill-tag">IAM</span><span class="skill-tag">EC2 / S3</span>',
+      'skill-2-name': 'الحاويات والتنسيق',
+      'skill-2-tags': '<span class="skill-tag">Kubernetes</span><span class="skill-tag">Docker</span><span class="skill-tag">CKA (قيد الإعداد)</span>',
+      'skill-3-name': 'تطوير الواجهة الخلفية',
+      'skill-3-tags': '<span class="skill-tag">Java</span><span class="skill-tag">Spring Boot</span><span class="skill-tag">Python</span><span class="skill-tag">REST APIs</span>',
+      'skill-4-name': 'هندسة الأنظمة',
+      'skill-4-tags': '<span class="skill-tag">قائم على الأحداث</span><span class="skill-tag">ERP / Odoo</span><span class="skill-tag">التكامل</span>',
+      'skill-5-name': 'قيادة تقنية المعلومات والدعم',
+      'skill-5-tags': '<span class="skill-tag">قائد فريق</span><span class="skill-tag">إدارة SLA</span><span class="skill-tag">ITSM</span>',
+      'skill-6-name': 'التواصل',
+      'skill-6-tags': '<span class="skill-tag">العربية</span><span class="skill-tag">الإنجليزية</span><span class="skill-tag">الكتابة التقنية</span>',
+      'exp-tag': '// 03 — المسيرة', 'exp-title': 'الخبرة المهنية',
+      'exp-1-date': '2025 — حتى الآن', 'exp-1-role': 'قائد فريق الدعم التقني',
+      'exp-1-company': 'بروبتك · الرياض، المملكة العربية السعودية',
+      'exp-1-desc': 'قيادة عمليات الدعم التقني لمنصة البروبتك السعودية المبنية على Odoo 17. الإشراف على تكاملات إيجار ووحدات ERP المؤسسية ومبادرات قابلية التوسع عبر المشتريات والمخزون والأسطول وأنظمة الموارد البشرية.',
+      'exp-2-date': 'دور سابق', 'exp-2-role': 'مهندس الأنظمة والمنصات',
+      'exp-2-company': 'بروبتك · الرياض، المملكة العربية السعودية',
+      'exp-2-desc': 'أعمال المنصة الخلفية تشمل البنية السحابية الحديثة والأنظمة القائمة على الأحداث وبذر البيانات واسعة النطاق لبيئات العرض. قيادة الهجرات الجماعية وإدارة الأنظمة عبر نطاقات المؤسسة المتعددة.',
+      'exp-3-date': 'في وقت سابق', 'exp-3-role': 'مهندس دعم تقنية المعلومات',
+      'exp-3-company': 'سالاسا للخدمات اللوجستية والعثيم القابضة',
+      'exp-3-desc': 'تقديم دعم تقني شامل عبر عمليات اللوجستيات والتجزئة — إدارة البنية التحتية وأنظمة المستخدمين واستمرارية الخدمة في بيئات تعمل على مدار الساعة.',
+      'certs-tag': '// 04 — اعتمادات', 'certs-title': 'الشهادات',
+      'cert-1-issuer': 'أمازون ويب سيرفيسز', 'cert-1-status': 'فعّالة',
+      'cert-2-issuer': 'أوراكل', 'cert-2-status': 'فعّالة',
+      'cert-3-issuer': 'CNCF', 'cert-3-status': 'قيد التحضير',
+      'cert-4-issuer': 'أمازون ويب سيرفيسز', 'cert-4-status': 'قيد التحضير',
+      'cert-5-issuer': 'أمازون ويب سيرفيسز', 'cert-5-status': 'قيد التحضير',
+      'cert-6-issuer': 'هاشيكورب', 'cert-6-status': 'مخطط',
+      'contact-tag': '// 05 — تواصل', 'contact-title': 'تواصل معي',
+      'contact-sub': 'أرحّب بفرص التعاون والاستشارات والتحديات الهندسية المثيرة للاهتمام.',
+      'contact-linkedin': '↗ لينكد إن',
+      'form-name-label': 'الاسم', 'form-name-ph': 'اسمك',
+      'form-email-label': 'البريد الإلكتروني', 'form-email-ph': 'بريدك@example.com',
+      'form-msg-label': 'الرسالة', 'form-msg-ph': 'ما الذي تودّ قوله؟',
+      'form-submit': 'إرسال الرسالة ←',
+      'footer-copy': 'عبدالرحمن الحاج © 2025',
+      'msg-success': 'تم إرسال رسالتك — سأتواصل معك قريباً.',
+      'msg-error': 'حدث خطأ ما. يرجى المحاولة مجدداً.',
+    }
+  };
+
+  let currentLang = localStorage.getItem('lang') || 'en';
+
+  function applyLang(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.getElementById('langBtn').textContent = lang === 'ar' ? 'EN' : 'AR';
+    document.querySelectorAll('[data-key]').forEach(el => {
+      const val = t[lang][el.dataset.key];
+      if (val !== undefined) el.innerHTML = val;
+    });
+    document.getElementById('cf-name').placeholder = t[lang]['form-name-ph'];
+    document.getElementById('cf-email').placeholder = t[lang]['form-email-ph'];
+    document.getElementById('cf-msg').placeholder = t[lang]['form-msg-ph'];
+    localStorage.setItem('lang', lang);
+    currentLang = lang;
+  }
+
+  document.getElementById('langBtn').addEventListener('click', () => {
+    applyLang(currentLang === 'en' ? 'ar' : 'en');
+  });
+
+  applyLang(currentLang);
+
   // Mobile nav toggle
   const toggle = document.getElementById('navToggle');
   const links = document.getElementById('navLinks');
@@ -780,7 +979,7 @@
     const formData = new FormData(form);
     formData.append('access_key', '60aa09ec-9a30-4503-a57b-4b9e3adf6837');
     const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending…';
+    submitBtn.textContent = currentLang === 'ar' ? 'جارٍ الإرسال…' : 'Sending…';
     submitBtn.disabled = true;
     formMsg.style.display = 'none';
     try {
@@ -790,7 +989,7 @@
       });
       const data = await response.json();
       if (response.ok) {
-        formMsg.textContent = 'Message sent — I\'ll be in touch soon.';
+        formMsg.textContent = t[currentLang]['msg-success'];
         formMsg.className = 'form-msg success';
         form.reset();
       } else {
@@ -798,7 +997,7 @@
         formMsg.className = 'form-msg error';
       }
     } catch (error) {
-      formMsg.textContent = 'Something went wrong. Please try again.';
+      formMsg.textContent = t[currentLang]['msg-error'];
       formMsg.className = 'form-msg error';
     } finally {
       formMsg.style.display = 'block';
