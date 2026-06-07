@@ -790,10 +790,11 @@
         msg.className = 'form-msg success';
         this.reset();
       } else {
-        throw new Error(data.message);
+        msg.textContent = data.message || 'Submission failed. Try emailing directly.';
+        msg.className = 'form-msg error';
       }
     } catch(err) {
-      msg.textContent = 'Something went wrong. Try emailing directly.';
+      msg.textContent = 'Network error. Try emailing directly.';
       msg.className = 'form-msg error';
     }
     msg.style.display = 'block';
