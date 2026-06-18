@@ -7,11 +7,11 @@
 <meta name="description" content="Comprehensive school management solution on Odoo 17 for Saudi educational institutions — QR kiosk attendance, fee management, grades, timetables, and multi-campus support.">
 <link rel="canonical" href="https://hdrelhaj.com/projects/school.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230d1b2a'/><text x='50' y='68' font-family='Georgia,serif' font-size='46' fill='%23d4902a' text-anchor='middle' font-weight='300'>AH</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --navy: #0d1b2a; --navy-mid: #1a2d42; --navy-light: #243b55;
+    --navy: #0d1b2a; --navy-mid: #1a2d42;
     --amber: #d4902a; --amber-light: #e8b060;
     --cream: #f5f0e8; --cream-dark: #e8e0d0;
     --text: #1a1a2e; --muted: #6b7280;
@@ -19,123 +19,77 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Outfit', sans-serif; background: var(--cream); color: var(--text); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
 
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 3rem;
-    background: rgba(13,27,42,0.95); backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(212,144,42,0.2);
-  }
-  .nav-back {
-    font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.15em;
-    color: rgba(245,240,232,0.5); text-decoration: none; transition: color 0.2s;
-  }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(13,27,42,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(212,144,42,0.2); }
+  .nav-back { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: rgba(245,240,232,0.5); text-decoration: none; transition: color 0.2s; }
   .nav-back:hover { color: var(--amber); }
-  .nav-title {
-    font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.15em;
-    color: var(--amber);
-  }
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+  .nav-title { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: var(--amber); }
+  .lang-btn { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--amber); background: none; border: 1px solid rgba(212,144,42,0.45); padding: 4px 10px; cursor: pointer; transition: all 0.2s; line-height: 1; }
+  .lang-btn:hover { background: var(--amber); color: var(--navy); }
 
-  .hero {
-    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
-    padding: 8rem 6rem 6rem; background: var(--navy); position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 80% 40%, rgba(212,144,42,0.07) 0%, transparent 60%);
-    pointer-events: none;
-  }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 6rem 6rem; background: var(--navy); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 40%, rgba(212,144,42,0.07) 0%, transparent 60%); pointer-events: none; }
   .hero-inner { position: relative; z-index: 2; max-width: 760px; }
-  .hero-tag {
-    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em;
-    color: var(--amber); text-transform: uppercase; margin-bottom: 1.5rem; display: block;
-  }
-  .hero-name {
-    font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem);
-    font-weight: 300; line-height: 1.05; color: var(--cream); margin-bottom: 1rem;
-  }
+  .hero-tag { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--amber); text-transform: uppercase; margin-bottom: 1.5rem; display: block; }
+  .hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; line-height: 1.05; color: var(--cream); margin-bottom: 1rem; }
   .hero-name em { font-style: italic; color: var(--amber-light); }
-  .hero-tagline {
-    font-size: 16px; color: rgba(245,240,232,0.6); max-width: 540px; line-height: 1.8; margin-bottom: 2rem;
-  }
+  .hero-tagline { font-size: 16px; color: rgba(245,240,232,0.6); max-width: 540px; line-height: 1.8; margin-bottom: 2rem; }
   .hero-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2.5rem; }
-  .hero-tag-chip {
-    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.05em;
-    padding: 4px 12px; border: 1px solid rgba(212,144,42,0.3); color: rgba(212,144,42,0.75);
-  }
-  .hero-cta {
-    display: inline-flex; align-items: center; gap: 10px; padding: 0.75rem 2rem;
-    border: 1px solid var(--amber); color: var(--amber); font-size: 13px;
-    letter-spacing: 0.12em; text-decoration: none; font-family: 'DM Mono', monospace;
-    transition: all 0.3s; font-weight: 300;
-  }
+  .hero-chip { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.05em; padding: 4px 12px; border: 1px solid rgba(212,144,42,0.3); color: rgba(212,144,42,0.75); }
+  .hero-cta { display: inline-flex; align-items: center; gap: 10px; padding: 0.75rem 2rem; border: 1px solid var(--amber); color: var(--amber); font-size: 13px; letter-spacing: 0.12em; text-decoration: none; font-family: 'DM Mono', monospace; transition: all 0.3s; font-weight: 300; }
   .hero-cta:hover { background: var(--amber); color: var(--navy); }
 
   section { padding: 5rem 6rem; }
-  .section-tag {
-    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em;
-    color: var(--amber); text-transform: uppercase; margin-bottom: 0.75rem; display: block;
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3vw, 2.8rem);
-    font-weight: 300; color: var(--navy); margin-bottom: 2rem; line-height: 1.1;
-  }
+  .section-tag { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--amber); text-transform: uppercase; margin-bottom: 0.75rem; display: block; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; color: var(--navy); margin-bottom: 2rem; line-height: 1.1; }
   .section-title.light { color: var(--cream); }
-  .section-body {
-    font-size: 15px; color: var(--muted); line-height: 1.9; max-width: 680px; margin-bottom: 1rem;
-  }
+  .section-body { font-size: 15px; color: var(--muted); line-height: 1.9; max-width: 680px; margin-bottom: 1rem; }
 
   #overview { background: var(--cream); }
   #features { background: var(--navy); }
 
-  .features-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1rem;
-  }
-  .feature-card {
-    border: 1px solid rgba(212,144,42,0.2); padding: 1.75rem;
-    position: relative; transition: border-color 0.3s;
-  }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+  .feature-card { border: 1px solid rgba(212,144,42,0.2); padding: 1.75rem; position: relative; transition: border-color 0.3s; }
   .feature-card:hover { border-color: var(--amber); }
-  .feature-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0;
-    height: 2px; background: var(--amber); transform: scaleX(0); transform-origin: left;
-    transition: transform 0.3s;
-  }
+  .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
   .feature-card:hover::before { transform: scaleX(1); }
-  .feature-icon {
-    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em;
-    color: var(--amber); margin-bottom: 0.75rem; display: block;
-  }
+  .feature-icon { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: var(--amber); margin-bottom: 0.75rem; display: block; }
   .feature-name { font-size: 15px; font-weight: 500; color: var(--cream); margin-bottom: 0.5rem; }
   .feature-desc { font-size: 13px; color: rgba(245,240,232,0.5); line-height: 1.8; }
 
   #stack { background: white; }
-  .stack-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;
-  }
-  .stack-item {
-    background: var(--cream); border: 1px solid var(--cream-dark); padding: 1.25rem 1.5rem;
-    display: flex; flex-direction: column; gap: 4px;
-  }
-  .stack-layer {
-    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em;
-    color: var(--amber); text-transform: uppercase;
-  }
+  .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .stack-item { background: var(--cream); border: 1px solid var(--cream-dark); padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 4px; }
+  .stack-layer { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: var(--amber); text-transform: uppercase; }
   .stack-value { font-size: 14px; font-weight: 500; color: var(--navy); }
 
-  footer {
-    background: var(--navy); padding: 2rem 6rem;
-    display: flex; justify-content: space-between; align-items: center;
-    border-top: 1px solid rgba(245,240,232,0.07);
-  }
-  footer a {
-    font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em;
-    color: rgba(245,240,232,0.4); text-decoration: none; transition: color 0.2s;
-  }
+  footer { background: var(--navy); padding: 2rem 6rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(245,240,232,0.07); }
+  footer a { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: rgba(245,240,232,0.4); text-decoration: none; transition: color 0.2s; }
   footer a:hover { color: var(--amber); }
+
+  html[dir="rtl"] body { font-family: 'Tajawal', sans-serif; }
+  html[dir="rtl"] .hero-name { font-family: 'Amiri', serif; font-size: clamp(3.2rem, 5.5vw, 5.5rem); line-height: 1.2; letter-spacing: 0; }
+  html[dir="rtl"] .hero-name em { font-style: italic; }
+  html[dir="rtl"] .section-title { font-family: 'Amiri', serif; letter-spacing: 0; font-size: clamp(2.2rem, 3.5vw, 3.2rem); }
+  html[dir="rtl"] .section-tag { font-family: 'Tajawal', sans-serif; letter-spacing: 0; text-transform: none; font-size: 13px; }
+  html[dir="rtl"] .hero-tag { font-family: 'Tajawal', sans-serif; letter-spacing: 0; text-transform: none; font-size: 13px; }
+  html[dir="rtl"] .hero-tagline { font-size: 17px; line-height: 2; }
+  html[dir="rtl"] .section-body { font-size: 16px; line-height: 2; }
+  html[dir="rtl"] .hero-cta { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 15px; }
+  html[dir="rtl"] .hero-chip { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 12px; }
+  html[dir="rtl"] .feature-name { font-family: 'Tajawal', sans-serif; font-size: 16px; }
+  html[dir="rtl"] .feature-icon { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 11px; }
+  html[dir="rtl"] .feature-desc { font-size: 14px; line-height: 2; }
+  html[dir="rtl"] .feature-card::before { transform-origin: right; }
+  html[dir="rtl"] .stack-layer { font-family: 'Tajawal', sans-serif; letter-spacing: 0; text-transform: none; font-size: 11px; }
+  html[dir="rtl"] .stack-value { font-family: 'Tajawal', sans-serif; font-size: 15px; }
+  html[dir="rtl"] .nav-back { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 13px; }
+  html[dir="rtl"] .nav-title { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 13px; }
+  html[dir="rtl"] footer a { font-family: 'Tajawal', sans-serif; letter-spacing: 0; font-size: 13px; }
 
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
+    .nav-title { display: none; }
     .hero { padding: 7rem 1.5rem 4rem; }
     section { padding: 3.5rem 1.5rem; }
     footer { padding: 1.5rem; flex-direction: column; gap: 0.75rem; text-align: center; }
@@ -145,134 +99,180 @@
 <body>
 
 <nav>
-  <a href="/" class="nav-back">← hdrelhaj.com</a>
-  <span class="nav-title">School Management System</span>
+  <a href="/" class="nav-back" data-key="nav-back">← hdrelhaj.com</a>
+  <div class="nav-right">
+    <span class="nav-title" data-key="nav-title">School Management System</span>
+    <button class="lang-btn" id="langBtn">AR</button>
+  </div>
 </nav>
 
 <section class="hero">
   <div class="hero-inner">
-    <span class="hero-tag">// 03 — Project</span>
-    <h1 class="hero-name">School<br><em>Management System</em></h1>
-    <p class="hero-tagline">Comprehensive school management solution on Odoo 17 for Saudi educational institutions — QR kiosk attendance, student enrollment, fee management, grades, timetables, and multi-campus support.</p>
+    <span class="hero-tag" data-key="hero-tag">// 03 — Project</span>
+    <h1 class="hero-name" data-key="hero-name">School<br><em>Management System</em></h1>
+    <p class="hero-tagline" data-key="hero-tagline">Comprehensive school management solution on Odoo 17 for Saudi educational institutions — QR kiosk attendance, student enrollment, fee management, grades, timetables, and multi-campus support.</p>
     <div class="hero-stack">
-      <span class="hero-tag-chip">Odoo 17</span>
-      <span class="hero-tag-chip">Python</span>
-      <span class="hero-tag-chip">PostgreSQL 15</span>
-      <span class="hero-tag-chip">Docker</span>
-      <span class="hero-tag-chip">Nginx</span>
-      <span class="hero-tag-chip">QR Attendance</span>
-      <span class="hero-tag-chip">Let's Encrypt</span>
+      <span class="hero-chip">Odoo 17</span>
+      <span class="hero-chip">Python</span>
+      <span class="hero-chip">PostgreSQL 15</span>
+      <span class="hero-chip">Docker</span>
+      <span class="hero-chip">Nginx</span>
+      <span class="hero-chip">QR Attendance</span>
+      <span class="hero-chip">Let's Encrypt</span>
     </div>
-    <a href="https://sms.hdrelhaj.com" class="hero-cta" target="_blank" rel="noopener">↗ View Live Platform</a>
+    <a href="https://sms.hdrelhaj.com" class="hero-cta" target="_blank" rel="noopener" data-key="hero-cta">↗ View Live Platform</a>
   </div>
 </section>
 
 <section id="overview">
-  <span class="section-tag">// Overview</span>
-  <h2 class="section-title">About this project</h2>
-  <p class="section-body">The School Management System is a full-featured Odoo 17 deployment designed for Saudi educational institutions. It handles the day-to-day operations of a school — student enrollment and records, attendance, fee collection, academic grading, timetabling, and parent communication — all from a single integrated platform.</p>
-  <p class="section-body">A standout feature is the QR kiosk attendance module: students and teachers check in by scanning a QR code with a camera-based kiosk, eliminating manual registers. The system supports multiple campuses and enforces a 7-role access model — Admin, Principal, Affairs, Accountant, Teacher, Parent, and Student — so every user sees exactly what they need.</p>
+  <span class="section-tag" data-key="overview-tag">// Overview</span>
+  <h2 class="section-title" data-key="overview-title">About this project</h2>
+  <p class="section-body" data-key="overview-body1">The School Management System is a full-featured Odoo 17 deployment designed for Saudi educational institutions. It handles the day-to-day operations of a school — student enrollment and records, attendance, fee collection, academic grading, timetabling, and parent communication — all from a single integrated platform.</p>
+  <p class="section-body" data-key="overview-body2">A standout feature is the QR kiosk attendance module: students and teachers check in by scanning a QR code with a camera-based kiosk, eliminating manual registers. The system supports multiple campuses and enforces a 7-role access model — Admin, Principal, Affairs, Accountant, Teacher, Parent, and Student — so every user sees exactly what they need.</p>
 </section>
 
 <section id="features">
-  <span class="section-tag">// Features</span>
-  <h2 class="section-title light">Key Features</h2>
+  <span class="section-tag" data-key="features-tag">// Features</span>
+  <h2 class="section-title light" data-key="features-title">Key Features</h2>
   <div class="features-grid">
-
     <div class="feature-card">
-      <span class="feature-icon">ENROLL</span>
-      <div class="feature-name">Student Enrollment & Records</div>
-      <div class="feature-desc">Multi-campus student management with complete academic records. Supports parallel campuses with class-level organization and student photo profiles for ID card generation.</div>
+      <span class="feature-icon" data-key="f1-icon">ENROLL</span>
+      <div class="feature-name" data-key="f1-name">Student Enrollment & Records</div>
+      <div class="feature-desc" data-key="f1-desc">Multi-campus student management with complete academic records. Supports parallel campuses with class-level organization and student photo profiles for ID card generation.</div>
     </div>
-
     <div class="feature-card">
-      <span class="feature-icon">QR</span>
-      <div class="feature-name">QR Kiosk Attendance</div>
-      <div class="feature-desc">Camera-based QR scan check-in for students and teachers. Teacher mode tracks check-in and check-out with duration calculation. Printable A5 QR ID cards with student photo.</div>
+      <span class="feature-icon" data-key="f2-icon">QR</span>
+      <div class="feature-name" data-key="f2-name">QR Kiosk Attendance</div>
+      <div class="feature-desc" data-key="f2-desc">Camera-based QR scan check-in for students and teachers. Teacher mode tracks check-in and check-out with duration calculation. Printable A5 QR ID cards with student photo.</div>
     </div>
-
     <div class="feature-card">
-      <span class="feature-icon">FEES</span>
-      <div class="feature-name">Fee Management</div>
-      <div class="feature-desc">Flexible fee collection with multiple payment methods and installment scheduling. Full payment records with accountant-level access controls and outstanding balance tracking.</div>
+      <span class="feature-icon" data-key="f3-icon">FEES</span>
+      <div class="feature-name" data-key="f3-name">Fee Management</div>
+      <div class="feature-desc" data-key="f3-desc">Flexible fee collection with multiple payment methods and installment scheduling. Full payment records with accountant-level access controls and outstanding balance tracking.</div>
     </div>
-
     <div class="feature-card">
-      <span class="feature-icon">GRADES</span>
-      <div class="feature-name">Grades & Exams</div>
-      <div class="feature-desc">Bulk grade entry for efficient teacher workflows, exam scheduling and management, printable grade sheets, and a student-visible gradebook with subject-by-subject breakdowns.</div>
+      <span class="feature-icon" data-key="f4-icon">GRADES</span>
+      <div class="feature-name" data-key="f4-name">Grades & Exams</div>
+      <div class="feature-desc" data-key="f4-desc">Bulk grade entry for efficient teacher workflows, exam scheduling and management, printable grade sheets, and a student-visible gradebook with subject-by-subject breakdowns.</div>
     </div>
-
     <div class="feature-card">
-      <span class="feature-icon">TIMETABLE</span>
-      <div class="feature-name">Timetable Management</div>
-      <div class="feature-desc">Weekly schedule builder for classes and teachers. Prevents double-booking of rooms and teachers. Supports different schedules per class and per campus.</div>
+      <span class="feature-icon" data-key="f5-icon">TIMETABLE</span>
+      <div class="feature-name" data-key="f5-name">Timetable Management</div>
+      <div class="feature-desc" data-key="f5-desc">Weekly schedule builder for classes and teachers. Prevents double-booking of rooms and teachers. Supports different schedules per class and per campus.</div>
     </div>
-
     <div class="feature-card">
-      <span class="feature-icon">COMMS</span>
-      <div class="feature-name">Parent Notifications</div>
-      <div class="feature-desc">Bulk email notifications to parent contact lists directly from the platform. School-wide announcement system with targeted audience selection (class, campus, or all parents).</div>
+      <span class="feature-icon" data-key="f6-icon">COMMS</span>
+      <div class="feature-name" data-key="f6-name">Parent Notifications</div>
+      <div class="feature-desc" data-key="f6-desc">Bulk email notifications to parent contact lists directly from the platform. School-wide announcement system with targeted audience selection (class, campus, or all parents).</div>
     </div>
-
     <div class="feature-card">
-      <span class="feature-icon">KPI</span>
-      <div class="feature-name">Analytics Dashboard</div>
-      <div class="feature-desc">KPI cards for enrollment, attendance rates, fee collection, and exam performance. Pivot and graph views for trend analysis. Role-based KPI visibility — principals see school-wide data, teachers see their classes.</div>
+      <span class="feature-icon" data-key="f7-icon">KPI</span>
+      <div class="feature-name" data-key="f7-name">Analytics Dashboard</div>
+      <div class="feature-desc" data-key="f7-desc">KPI cards for enrollment, attendance rates, fee collection, and exam performance. Pivot and graph views for trend analysis. Role-based KPI visibility — principals see school-wide data, teachers see their classes.</div>
     </div>
-
     <div class="feature-card">
-      <span class="feature-icon">RBAC</span>
-      <div class="feature-name">7-Role Access Control</div>
-      <div class="feature-desc">Admin, Principal, Affairs, Accountant, Teacher, Parent, and Student roles. Each role has scoped access — students see their own grades, parents see their children's records, teachers manage their classes.</div>
+      <span class="feature-icon" data-key="f8-icon">RBAC</span>
+      <div class="feature-name" data-key="f8-name">7-Role Access Control</div>
+      <div class="feature-desc" data-key="f8-desc">Admin, Principal, Affairs, Accountant, Teacher, Parent, and Student roles. Each role has scoped access — students see their own grades, parents see their children's records, teachers manage their classes.</div>
     </div>
-
   </div>
 </section>
 
 <section id="stack">
-  <span class="section-tag">// Stack</span>
-  <h2 class="section-title">Technical Stack</h2>
+  <span class="section-tag" data-key="stack-tag">// Stack</span>
+  <h2 class="section-title" data-key="stack-title">Technical Stack</h2>
   <div class="stack-grid">
-    <div class="stack-item">
-      <span class="stack-layer">Framework</span>
-      <span class="stack-value">Odoo 17 Community</span>
-    </div>
-    <div class="stack-item">
-      <span class="stack-layer">Language</span>
-      <span class="stack-value">Python</span>
-    </div>
-    <div class="stack-item">
-      <span class="stack-layer">Database</span>
-      <span class="stack-value">PostgreSQL 15</span>
-    </div>
-    <div class="stack-item">
-      <span class="stack-layer">Containers</span>
-      <span class="stack-value">Docker Compose</span>
-    </div>
-    <div class="stack-item">
-      <span class="stack-layer">Reverse Proxy</span>
-      <span class="stack-value">Nginx</span>
-    </div>
-    <div class="stack-item">
-      <span class="stack-layer">TLS</span>
-      <span class="stack-value">Let's Encrypt (Certbot)</span>
-    </div>
-    <div class="stack-item">
-      <span class="stack-layer">Attendance</span>
-      <span class="stack-value">QR Code + Camera</span>
-    </div>
-    <div class="stack-item">
-      <span class="stack-layer">Custom Modules</span>
-      <span class="stack-value">school_management · school_qr_attendance</span>
-    </div>
+    <div class="stack-item"><span class="stack-layer" data-key="s1-layer">Framework</span><span class="stack-value">Odoo 17 Community</span></div>
+    <div class="stack-item"><span class="stack-layer" data-key="s2-layer">Language</span><span class="stack-value">Python</span></div>
+    <div class="stack-item"><span class="stack-layer" data-key="s3-layer">Database</span><span class="stack-value">PostgreSQL 15</span></div>
+    <div class="stack-item"><span class="stack-layer" data-key="s4-layer">Containers</span><span class="stack-value">Docker Compose</span></div>
+    <div class="stack-item"><span class="stack-layer" data-key="s5-layer">Reverse Proxy</span><span class="stack-value">Nginx</span></div>
+    <div class="stack-item"><span class="stack-layer" data-key="s6-layer">TLS</span><span class="stack-value">Let's Encrypt (Certbot)</span></div>
+    <div class="stack-item"><span class="stack-layer" data-key="s7-layer">Attendance</span><span class="stack-value">QR Code + Camera</span></div>
+    <div class="stack-item"><span class="stack-layer" data-key="s8-layer">Custom Modules</span><span class="stack-value">school_management · school_qr_attendance</span></div>
   </div>
 </section>
 
 <footer>
-  <a href="/">← Back to Portfolio</a>
-  <a href="https://sms.hdrelhaj.com" target="_blank" rel="noopener">↗ sms.hdrelhaj.com</a>
+  <a href="/" data-key="footer-back">← Back to Portfolio</a>
+  <a href="https://sms.hdrelhaj.com" target="_blank" rel="noopener" data-key="footer-live">↗ sms.hdrelhaj.com</a>
 </footer>
 
+<script>
+  const t = {
+    en: {
+      'nav-back': '← hdrelhaj.com',
+      'nav-title': 'School Management System',
+      'hero-tag': '// 03 — Project',
+      'hero-name': 'School<br><em>Management System</em>',
+      'hero-tagline': 'Comprehensive school management solution on Odoo 17 for Saudi educational institutions — QR kiosk attendance, student enrollment, fee management, grades, timetables, and multi-campus support.',
+      'hero-cta': '↗ View Live Platform',
+      'overview-tag': '// Overview',
+      'overview-title': 'About this project',
+      'overview-body1': 'The School Management System is a full-featured Odoo 17 deployment designed for Saudi educational institutions. It handles the day-to-day operations of a school — student enrollment and records, attendance, fee collection, academic grading, timetabling, and parent communication — all from a single integrated platform.',
+      'overview-body2': 'A standout feature is the QR kiosk attendance module: students and teachers check in by scanning a QR code with a camera-based kiosk, eliminating manual registers. The system supports multiple campuses and enforces a 7-role access model — Admin, Principal, Affairs, Accountant, Teacher, Parent, and Student — so every user sees exactly what they need.',
+      'features-tag': '// Features',
+      'features-title': 'Key Features',
+      'f1-icon': 'ENROLL', 'f1-name': 'Student Enrollment & Records', 'f1-desc': 'Multi-campus student management with complete academic records. Supports parallel campuses with class-level organization and student photo profiles for ID card generation.',
+      'f2-icon': 'QR', 'f2-name': 'QR Kiosk Attendance', 'f2-desc': 'Camera-based QR scan check-in for students and teachers. Teacher mode tracks check-in and check-out with duration calculation. Printable A5 QR ID cards with student photo.',
+      'f3-icon': 'FEES', 'f3-name': 'Fee Management', 'f3-desc': 'Flexible fee collection with multiple payment methods and installment scheduling. Full payment records with accountant-level access controls and outstanding balance tracking.',
+      'f4-icon': 'GRADES', 'f4-name': 'Grades & Exams', 'f4-desc': 'Bulk grade entry for efficient teacher workflows, exam scheduling and management, printable grade sheets, and a student-visible gradebook with subject-by-subject breakdowns.',
+      'f5-icon': 'TIMETABLE', 'f5-name': 'Timetable Management', 'f5-desc': 'Weekly schedule builder for classes and teachers. Prevents double-booking of rooms and teachers. Supports different schedules per class and per campus.',
+      'f6-icon': 'COMMS', 'f6-name': 'Parent Notifications', 'f6-desc': 'Bulk email notifications to parent contact lists directly from the platform. School-wide announcement system with targeted audience selection (class, campus, or all parents).',
+      'f7-icon': 'KPI', 'f7-name': 'Analytics Dashboard', 'f7-desc': 'KPI cards for enrollment, attendance rates, fee collection, and exam performance. Pivot and graph views for trend analysis. Role-based KPI visibility — principals see school-wide data, teachers see their classes.',
+      'f8-icon': 'RBAC', 'f8-name': '7-Role Access Control', 'f8-desc': "Admin, Principal, Affairs, Accountant, Teacher, Parent, and Student roles. Each role has scoped access — students see their own grades, parents see their children's records, teachers manage their classes.",
+      'stack-tag': '// Stack', 'stack-title': 'Technical Stack',
+      's1-layer': 'Framework', 's2-layer': 'Language', 's3-layer': 'Database', 's4-layer': 'Containers',
+      's5-layer': 'Reverse Proxy', 's6-layer': 'TLS', 's7-layer': 'Attendance', 's8-layer': 'Custom Modules',
+      'footer-back': '← Back to Portfolio', 'footer-live': '↗ sms.hdrelhaj.com',
+    },
+    ar: {
+      'nav-back': '← hdrelhaj.com',
+      'nav-title': 'نظام إدارة المدارس',
+      'hero-tag': '// 03 — مشروع',
+      'hero-name': 'نظام<br><em>إدارة المدارس</em>',
+      'hero-tagline': 'حل شامل لإدارة المدارس على Odoo 17 للمؤسسات التعليمية السعودية — حضور كشك QR، وتسجيل الطلاب، وإدارة الرسوم، والدرجات، والجداول الدراسية، ودعم متعدد الحرم الجامعي.',
+      'hero-cta': '↗ عرض المنصة الحية',
+      'overview-tag': '// نظرة عامة',
+      'overview-title': 'عن هذا المشروع',
+      'overview-body1': 'نظام إدارة المدارس هو نشر كامل المزايا لـ Odoo 17 مصمم للمؤسسات التعليمية السعودية. يتولى العمليات اليومية للمدرسة — تسجيل الطلاب وسجلاتهم والحضور وتحصيل الرسوم والتقدير الأكاديمي والجدول الدراسي والتواصل مع أولياء الأمور — كل ذلك من منصة متكاملة واحدة.',
+      'overview-body2': 'تبرز وحدة حضور كشك QR كميزة رئيسية: يسجل الطلاب والمعلمون حضورهم بمسح رمز QR عبر كشك بكاميرا، مما يلغي السجلات اليدوية. يدعم النظام حرم جامعية متعددة ويطبق نموذج وصول ذو 7 أدوار — مسؤول، مدير، شؤون، محاسب، معلم، ولي أمر، وطالب — حتى يرى كل مستخدم ما يحتاجه بالضبط.',
+      'features-tag': '// المميزات',
+      'features-title': 'المميزات الرئيسية',
+      'f1-icon': 'تسجيل', 'f1-name': 'تسجيل الطلاب وسجلاتهم', 'f1-desc': 'إدارة الطلاب متعددة الحرم الجامعي مع سجلات أكاديمية كاملة. يدعم حرم جامعية متوازية مع تنظيم على مستوى الفصل وصور الطلاب لبطاقات الهوية.',
+      'f2-icon': 'QR', 'f2-name': 'حضور كشك QR', 'f2-desc': 'تسجيل دخول بمسح QR بالكاميرا للطلاب والمعلمين. يتتبع وضع المعلم تسجيل الدخول والخروج مع حساب المدة. بطاقات هوية QR بحجم A5 قابلة للطباعة مع صورة الطالب.',
+      'f3-icon': 'رسوم', 'f3-name': 'إدارة الرسوم', 'f3-desc': 'تحصيل رسوم مرن مع طرق دفع متعددة وجدولة الأقساط. سجلات دفع كاملة مع ضوابط وصول على مستوى المحاسب وتتبع الرصيد المستحق.',
+      'f4-icon': 'درجات', 'f4-name': 'الدرجات والامتحانات', 'f4-desc': 'إدخال درجات بالجملة لتدفقات عمل المعلم الفعّالة، وجدولة الامتحانات وإدارتها، وكشوف درجات قابلة للطباعة، ودفتر درجات مرئي للطالب مع تفصيل بكل مادة.',
+      'f5-icon': 'جداول', 'f5-name': 'إدارة الجداول الدراسية', 'f5-desc': 'منشئ جداول أسبوعية للفصول والمعلمين. يمنع الحجز المزدوج للقاعات والمعلمين. يدعم جداول مختلفة لكل فصل ولكل حرم جامعي.',
+      'f6-icon': 'إشعارات', 'f6-name': 'إشعارات أولياء الأمور', 'f6-desc': 'إشعارات بريد إلكتروني جماعية لقوائم اتصال أولياء الأمور مباشرة من المنصة. نظام إعلانات على مستوى المدرسة مع اختيار الجمهور المستهدف (فصل، حرم جامعي، أو جميع أولياء الأمور).',
+      'f7-icon': 'تحليلات', 'f7-name': 'لوحة التحليلات', 'f7-desc': 'بطاقات مؤشرات الأداء للتسجيل ومعدلات الحضور وتحصيل الرسوم وأداء الامتحانات. طرق عرض محورية وبيانية لتحليل الاتجاهات. رؤية مؤشرات الأداء القائمة على الدور — يرى المديرون بيانات المدرسة بأكملها، ويرى المعلمون فصولهم.',
+      'f8-icon': 'أدوار', 'f8-name': 'التحكم في الوصول بـ 7 أدوار', 'f8-desc': 'أدوار المسؤول والمدير والشؤون والمحاسب والمعلم وولي الأمر والطالب. لكل دور وصول محدد النطاق — يرى الطلاب درجاتهم الخاصة، يرى أولياء الأمور سجلات أبنائهم، يدير المعلمون فصولهم.',
+      'stack-tag': '// التقنيات', 'stack-title': 'المكدس التقني',
+      's1-layer': 'الإطار', 's2-layer': 'اللغة', 's3-layer': 'قاعدة البيانات', 's4-layer': 'الحاويات',
+      's5-layer': 'البروكسي العكسي', 's6-layer': 'TLS', 's7-layer': 'الحضور', 's8-layer': 'الوحدات المخصصة',
+      'footer-back': '← العودة إلى ملفي الشخصي', 'footer-live': '↗ sms.hdrelhaj.com',
+    }
+  };
+
+  let currentLang = localStorage.getItem('lang') || 'en';
+
+  function applyLang(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.getElementById('langBtn').textContent = lang === 'ar' ? 'EN' : 'AR';
+    document.querySelectorAll('[data-key]').forEach(el => {
+      const val = t[lang][el.dataset.key];
+      if (val !== undefined) el.innerHTML = val;
+    });
+    localStorage.setItem('lang', lang);
+    currentLang = lang;
+  }
+
+  document.getElementById('langBtn').addEventListener('click', () => {
+    applyLang(currentLang === 'en' ? 'ar' : 'en');
+  });
+
+  applyLang(currentLang);
+</script>
 </body>
 </html>
