@@ -293,6 +293,14 @@
     color: rgba(212,144,42,0.7);
     font-family: 'DM Mono', monospace; letter-spacing: 0.05em;
   }
+  .project-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.1em;
+    color: var(--amber); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: auto; transition: opacity 0.2s;
+  }
+  .project-link:hover { opacity: 0.65; }
 
   /* ── EXPERIENCE ── */
   #experience { background: var(--navy); }
@@ -598,40 +606,43 @@
 
     <div class="project-card">
       <div class="project-num" data-key="p1-num">01 / 03</div>
-      <div class="project-name" data-key="p1-name">Ejar Integration Service</div>
-      <div class="project-desc" data-key="p1-desc">Real-time bridge between Odoo 17 and the Saudi government's Ejar rental platform. Handles contract lifecycle events, automated status sync, and error recovery — processing thousands of tenancy records across the PropTech portfolio.</div>
+      <div class="project-name" data-key="p1-name">Propza — Property Management</div>
+      <div class="project-desc" data-key="p1-desc">Full-lifecycle Saudi property management platform built on Odoo 17. Covers a CRM lead-to-tenancy pipeline, Ejar ECRS integration with async contract submission, AI-powered property matching, Riyadh rent-freeze compliance (2025–2030), tenant self-service portal, and broker commission management.</div>
       <div class="project-stack">
-        <span class="project-tag">Java</span>
-        <span class="project-tag">Spring Boot</span>
         <span class="project-tag">Odoo 17</span>
-        <span class="project-tag">REST APIs</span>
-        <span class="project-tag">AWS</span>
+        <span class="project-tag">Python</span>
+        <span class="project-tag">PostgreSQL</span>
+        <span class="project-tag">Docker</span>
+        <span class="project-tag">Ejar API</span>
       </div>
     </div>
 
     <div class="project-card">
       <div class="project-num" data-key="p2-num">02 / 03</div>
-      <div class="project-name" data-key="p2-name">ERP Demo Seeding Engine</div>
-      <div class="project-desc" data-key="p2-desc">Bulk data generation and migration tooling for PropTech demo environments. Seeds tens of thousands of realistic property, tenant, and transaction records across procurement, inventory, fleet, and HR modules — cutting environment setup time from days to hours.</div>
+      <div class="project-name" data-key="p2-name">Construction Management System</div>
+      <div class="project-desc" data-key="p2-desc">Production Odoo 17 deployment for Saudi construction project management. Features Bill of Quantities with Excel import, a 4-stage progress certificate approval workflow, contract management with retention tracking, and ZATCA QR code generation for Saudi tax compliance.</div>
       <div class="project-stack">
+        <span class="project-tag">Odoo 17</span>
         <span class="project-tag">Python</span>
-        <span class="project-tag">Odoo ORM</span>
         <span class="project-tag">PostgreSQL</span>
         <span class="project-tag">Docker</span>
+        <span class="project-tag">ZATCA</span>
       </div>
+      <a href="https://cms.hdrelhaj.com" class="project-link" target="_blank" rel="noopener" data-key="p2-link">↗ cms.hdrelhaj.com</a>
     </div>
 
     <div class="project-card">
       <div class="project-num" data-key="p3-num">03 / 03</div>
-      <div class="project-name" data-key="p3-name">Cloud Infrastructure Baseline</div>
-      <div class="project-desc" data-key="p3-desc">Designed and deployed a multi-environment AWS infrastructure baseline for the PropTech platform — covering VPC architecture, IAM roles, S3 lifecycle policies, EC2 auto-scaling groups, and OCI cross-cloud connectivity for legacy workloads.</div>
+      <div class="project-name" data-key="p3-name">School Management System</div>
+      <div class="project-desc" data-key="p3-desc">Comprehensive school management solution on Odoo 17 for Saudi educational institutions. Covers student enrollment, QR kiosk attendance with camera-based check-in, fee management, grades and exams, timetabling, and parent notifications — with multi-campus support.</div>
       <div class="project-stack">
-        <span class="project-tag">AWS</span>
-        <span class="project-tag">OCI</span>
-        <span class="project-tag">IAM</span>
-        <span class="project-tag">EC2</span>
-        <span class="project-tag">Terraform</span>
+        <span class="project-tag">Odoo 17</span>
+        <span class="project-tag">Python</span>
+        <span class="project-tag">PostgreSQL</span>
+        <span class="project-tag">Docker</span>
+        <span class="project-tag">QR Attendance</span>
       </div>
+      <a href="https://sms.hdrelhaj.com" class="project-link" target="_blank" rel="noopener" data-key="p3-link">↗ sms.hdrelhaj.com</a>
     </div>
 
   </div>
@@ -831,12 +842,14 @@
       'hero-cta': 'View my work →',
       'stat-1-label': 'Years experience', 'stat-2-label': 'Active certs', 'stat-3-label': 'Based in Riyadh',
       'proj-tag': '// 01 — work', 'proj-title': 'Selected Projects',
-      'p1-num': '01 / 03', 'p1-name': 'Ejar Integration Service',
-      'p1-desc': 'Real-time bridge between Odoo 17 and the Saudi government\'s Ejar rental platform. Handles contract lifecycle events, automated status sync, and error recovery — processing thousands of tenancy records across the PropTech portfolio.',
-      'p2-num': '02 / 03', 'p2-name': 'ERP Demo Seeding Engine',
-      'p2-desc': 'Bulk data generation and migration tooling for PropTech demo environments. Seeds tens of thousands of realistic property, tenant, and transaction records across procurement, inventory, fleet, and HR modules — cutting environment setup time from days to hours.',
-      'p3-num': '03 / 03', 'p3-name': 'Cloud Infrastructure Baseline',
-      'p3-desc': 'Designed and deployed a multi-environment AWS infrastructure baseline for the PropTech platform — covering VPC architecture, IAM roles, S3 lifecycle policies, EC2 auto-scaling groups, and OCI cross-cloud connectivity for legacy workloads.',
+      'p1-num': '01 / 03', 'p1-name': 'Propza — Property Management',
+      'p1-desc': 'Full-lifecycle Saudi property management platform built on Odoo 17. Covers a CRM lead-to-tenancy pipeline, Ejar ECRS integration with async contract submission, AI-powered property matching, Riyadh rent-freeze compliance (2025–2030), tenant self-service portal, and broker commission management.',
+      'p2-num': '02 / 03', 'p2-name': 'Construction Management System',
+      'p2-desc': 'Production Odoo 17 deployment for Saudi construction project management. Features Bill of Quantities with Excel import, a 4-stage progress certificate approval workflow, contract management with retention tracking, and ZATCA QR code generation for Saudi tax compliance.',
+      'p2-link': '↗ cms.hdrelhaj.com',
+      'p3-num': '03 / 03', 'p3-name': 'School Management System',
+      'p3-desc': 'Comprehensive school management solution on Odoo 17 for Saudi educational institutions. Covers student enrollment, QR kiosk attendance with camera-based check-in, fee management, grades and exams, timetabling, and parent notifications — with multi-campus support.',
+      'p3-link': '↗ sms.hdrelhaj.com',
       'skills-tag': '// 02 — expertise', 'skills-title': 'Technical Skills',
       'skill-1-name': 'Cloud & Infrastructure',
       'skill-1-tags': '<span class="skill-tag">AWS</span><span class="skill-tag">OCI</span><span class="skill-tag">IAM</span><span class="skill-tag">EC2 / S3</span>',
@@ -888,12 +901,14 @@
       'hero-cta': 'استعرض أعمالي ←',
       'stat-1-label': 'سنوات خبرة', 'stat-2-label': 'شهادات فعّالة', 'stat-3-label': 'مقرّ العمل الرياض',
       'proj-tag': '// 01 — أعمال', 'proj-title': 'مشاريع مختارة',
-      'p1-num': '٠١ / ٠٣', 'p1-name': 'خدمة تكامل إيجار',
-      'p1-desc': 'جسر آني بين Odoo 17 ومنصة إيجار الحكومية السعودية. يتولى إدارة دورة حياة العقود، والمزامنة الآلية للحالات، واستعادة الأخطاء — ويعالج آلاف سجلات الإيجار عبر محفظة البروبتك.',
-      'p2-num': '٠٢ / ٠٣', 'p2-name': 'محرك بيانات العروض التجريبية',
-      'p2-desc': 'أدوات توليد وهجرة البيانات بالجملة لبيئات عرض البروبتك التجريبية. تُنشئ عشرات الآلاف من سجلات العقارات والمستأجرين والمعاملات الواقعية عبر وحدات المشتريات والمخزون والأسطول والموارد البشرية — مما يُقلّص وقت إعداد البيئة من أيام إلى ساعات.',
-      'p3-num': '٠٣ / ٠٣', 'p3-name': 'البنية التحتية السحابية الأساسية',
-      'p3-desc': 'تصميم ونشر بنية AWS تحتية متعددة البيئات لمنصة البروبتك — تشمل بنية VPC وأدوار IAM وسياسات دورة حياة S3 ومجموعات التحجيم التلقائي EC2 والتوصيل المتبادل مع OCI للأعباء التراثية.',
+      'p1-num': '٠١ / ٠٣', 'p1-name': 'بروبزا — إدارة العقارات',
+      'p1-desc': 'منصة متكاملة لإدارة دورة حياة العقارات في السوق السعودي، مبنية على Odoo 17. تشمل خط أنابيب CRM من العميل المحتمل إلى عقد الإيجار، وتكامل إيجار ECRS مع إرسال العقود غير المتزامن، ومطابقة العقارات بالذكاء الاصطناعي، والامتثال لتجميد الإيجار في الرياض (2025–2030)، وبوابة الخدمة الذاتية للمستأجرين، وإدارة عمولات الوسطاء.',
+      'p2-num': '٠٢ / ٠٣', 'p2-name': 'نظام إدارة المشاريع الإنشائية',
+      'p2-desc': 'نشر Odoo 17 للإنتاج لإدارة مشاريع البناء السعودية. يتميز بجداول الكميات مع استيراد Excel، وسير عمل اعتماد شهادات التقدم ذو 4 مراحل، وإدارة العقود مع تتبع الاحتجاز، وتوليد رمز QR لهيئة الزكاة للامتثال الضريبي السعودي.',
+      'p2-link': '↗ cms.hdrelhaj.com',
+      'p3-num': '٠٣ / ٠٣', 'p3-name': 'نظام إدارة المدارس',
+      'p3-desc': 'حل شامل لإدارة المدارس على Odoo 17 للمؤسسات التعليمية السعودية. يشمل تسجيل الطلاب، وحضور كشك QR مع تسجيل الدخول بالكاميرا، وإدارة الرسوم والدرجات والامتحانات والجداول الدراسية وإشعارات أولياء الأمور — مع دعم متعدد الحرم الجامعي.',
+      'p3-link': '↗ sms.hdrelhaj.com',
       'skills-tag': '// 02 — خبرات', 'skills-title': 'المهارات التقنية',
       'skill-1-name': 'السحابة والبنية التحتية',
       'skill-1-tags': '<span class="skill-tag">AWS</span><span class="skill-tag">OCI</span><span class="skill-tag">IAM</span><span class="skill-tag">EC2 / S3</span>',
